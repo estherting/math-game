@@ -1,0 +1,17 @@
+Overview:
+1-2 players
+solve multiplication problems to advance critter
+first one to cross the finish line wins
+
+pre-game:
+- choose # of players
+- choose background
+- choose critter
+- choose difficulty
+
+game:
+(2-player) Each player gets a randomly generated problem and multiple-choice answers.
+When player chooses the correct answer using keyboard, the critter advances.
+Sections:
+- math problems
+- race track

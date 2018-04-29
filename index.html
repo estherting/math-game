@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Math game!</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var state = 0;
+        $('.buttons button').hover(function() {
+          var arena = $(this).text();
+          $('.container').css('background', 'no-repeat center center url(img/' + arena + '.jpg)');
+          $('.container').css('background-size', 'cover');
+        }, function() {
+          if(state == 0) {
+            $('.container').css('background', 'black');
+          }
+        })
+
+        $('.buttons button').click(function() {
+          $('.arena-select').hide();
+          $('.player-select').show();
+          state = 1;
+        })
+
+        // select player
+        var isPlayer1Ready = false;
+        var isPlayer2Ready = false;
+        $('.player1').change(function() {
+          var player1 = $("option:selected", this).text();
+          $('.player1-img').attr('src', 'img/' + player1 + '.png');
+          if(player1 != "Select Player 1"){
+            isPlayer1Ready = true;
+          }
+        })
+
+        $('.player2').change(function() {
+          var player2 = $("option:selected", this).text();
+          $('.player2-img').attr('src', 'img/' + player2 + '.png');
+          if(player2 != "Select Player 2"){
+            isPlayer2Ready = true;
+          }
+        })
+
+        // start game
+        // assumption: user doesn't change player back to "select player 1/2" after initial selection
+        $('.player-select form').submit(function() {
+          if(isPlayer1Ready && isPlayer2Ready) {
+            $('.player-select').hide();
+            $('.math-problem').show();
+          }
+          return false;
+        })
+
+        // when player selects the right answer...
+        // A = 65  S = 83  D = 63  F = 70
+        // H = 72  J = 74  K = 75  L = 76
+
+        $(document).keydown(function(e) {
+          //console.log(e.keyCode);
+          // if A is pressed, form.val() will be 20
+          
+        })
+
+        $('.player1-problem button').click(function() {
+          console.log($(this));
+        })
+
+        $('.player1-problem').submit(function() {
+
+          //console.log($('.player1-problem button').val());
+          return false;
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="modal arena-select">
+        <h2>Select Arena</h2>
+        <div class="buttons">
+          <button>beach</button>
+          <button>earth</button>
+          <button>dojo</button>
+          <button>forest</button>
+          <button>matrix</button>
+          <button>snow</button>
+        </div>
+      </div>
+
+      <div class="modal player-select">
+        <h2>Select Player</h2>
+        <form class="drop-down">
+          <select class="player1">
+            <option>Select Player 1</option>
+            <option>bunny</option>
+          </select>
+          <select class="player2">
+            <option>Select Player 2</option>
+            <option>bunny</option>
+          </select>
+          <button type="submit">START!</button>
+        </form>
+      </div>
+
+      <img class="player1-img" src="">
+      <img class="player2-img" src="">
+
+      <div class="math-problem">
+        <form class="player1-problem">
+          <h1>4 x 5 = </h1>
+          <label>
+            <h3>20</h3>
+            <button class="answer" value="20">A</button>
+          </label>
+          <label>
+            <h3>15</h3>
+            <button class="answer" value="15">S</button>
+          </label>
+        </form>
+        <form class="player2-problem">
+          <h1>5 x 5 = </h1>
+        </form>
+      </div>
+  </body>
+</html>
