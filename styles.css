@@ -37,6 +37,17 @@ h2 {
   display: block;
 }
 
+.player1-img {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.player2-img {
+  position: absolute;
+  top: 130px;
+  left: 30px;
+}
+
 .math-problem {
   /*display: none;*/
   width: 95%;
@@ -46,6 +57,11 @@ h2 {
   margin-right: auto;
   margin-left: auto;
 
+}
+
+.math-problem h3 {
+  padding-left: 10px;
+  text-align: center;
 }
 
 .player1-problem, .player2-problem {
